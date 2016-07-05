@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/facelets/templates/indexTemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="WS con Tipos complejos - Servicio" />
+        </ui:define>
+        <ui:define name="content"> 
+            <p:growl id="messages" showDetail="false" />
+            <br></br>
+            <b:panel>
+                <h:form id="frPersonas" prependId="false">
+                    <b:panel title="Cliente" look="info" collapsible="false">
+                        <b:panel id="pnForm" look="info">
+                            <b:row>
+                                <b:column span="4">
+                                    <b:inputText label="DNI" value="#{mbPersonaCliente.persona.dni}" >
+                                        <f:validateLongRange />
+                                    </b:inputText>
+                                </b:column>
+                                <b:column span="4">
+                                    <b:inputText label="Nombre" value="#{mbPersonaCliente.persona.nombre}" />
+                                </b:column>
+                                <b:column span="4">
+                                    <b:inputText label="Edad" value="#{mbPersonaCliente.persona.edad}" />
+                                </b:column> 
+                            </b:row>
+                            <b:row>
+                                <b:column span="12" >
+                                    <b:commandButton icon="glyphicon-ok" action="#{mbPersonaCliente.createPersona()}" look="primary" 
+                                             value="Guardar" ajax="true" update="messages" />
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                        
+                        <b:panel id="pnTable" look="info">
+                            <b:row>
+                                <b:column span="12" >
+                                     Tabla
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:panel>
+                </h:form>
+            </b:panel>
+        </ui:define> 
+    </ui:composition>
+</html>
+
